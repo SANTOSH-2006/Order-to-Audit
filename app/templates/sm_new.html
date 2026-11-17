@@ -1,0 +1,12 @@
+{% extends "base.html" %}{% block body %}
+<h1>New order</h1>
+<div id="status" class="muted"></div>
+<label>Customer <select id="cust"></select></label>
+<div id="lines"></div>
+<p class="total">Total (ex-GST): Rs <b id="total">0.00</b></p>
+<button class="primary big" id="submit">Submit order</button>
+<p class="muted">No signal? The order is saved on this phone and sent automatically when you are back online.</p>
+<script src="/static/queue.js"></script>
+<script src="/static/order.js"></script>
+<script>if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');</script>
+{% endblock %}

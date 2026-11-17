@@ -1,0 +1,17 @@
+*{box-sizing:border-box}body{font:16px/1.4 system-ui,sans-serif;margin:0;background:#faf8f4;color:#222}
+header{background:#7a2e0e;color:#fff;padding:.5rem 1rem;display:flex;flex-wrap:wrap;gap:.5rem 1.2rem;align-items:center}
+header a{color:#fff;text-decoration:none}.brand{font-weight:700}nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem;font-size:.9rem}
+main{max-width:1100px;margin:auto;padding:1rem}h1{font-size:1.4rem}h3{margin:.8rem 0 .3rem}
+.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;background:#fff;font-size:.9rem}
+th,td{border:1px solid #ddd;padding:.35rem .5rem;text-align:left}th{background:#f1e9dd}
+.card{background:#fff;border:1px solid #ddd;border-radius:8px;padding:.8rem;margin:1rem 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.6rem}.line{margin-top:.4rem}
+label{display:block;font-size:.85rem;color:#555}input,select{width:100%;padding:.55rem;font-size:1rem;border:1px solid #bbb;border-radius:6px;background:#fff}
+button,.big{display:inline-block;padding:.55rem 1rem;font-size:1rem;border:1px solid #7a2e0e;background:#fff;color:#7a2e0e;border-radius:6px;cursor:pointer;text-decoration:none;margin:.3rem .2rem 0 0}
+button.primary,.big{background:#7a2e0e;color:#fff}form.inline{display:inline}.row{display:flex;gap:.6rem;align-items:end;flex-wrap:wrap}
+.flash{padding:.6rem;border-radius:6px;margin-bottom:.6rem}.flash.ok{background:#e3f5e3}.flash.err{background:#fde3e3}
+.bad{color:#b00020;font-weight:700}.good{color:#1b7a2b}.muted{color:#777;font-size:.85rem}
+.cards{display:flex;gap:.8rem;flex-wrap:wrap}.cards div{background:#fff;border:1px solid #ddd;border-radius:8px;padding:.8rem 1.2rem}.cards b{display:block;font-size:1.6rem}
+.prow{display:flex;align-items:center;gap:.6rem;background:#fff;border:1px solid #ddd;border-radius:8px;padding:.6rem;margin:.5rem 0}
+.prow .n{flex:1}.prow input{width:5rem;text-align:center}.prow select{width:6.5rem}.prow button{margin:0;padding:.4rem .8rem;font-size:1.2rem}
+@media(max-width:600px){main{padding:.6rem}}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block body %}
+{% if back %}<a href="{{ back }}">&larr; back</a>{% endif %}
+<h1>{{ title }}</h1>
+{% for s in sections %}
+  {% if s.type == 'table' %}
+    {% if s.caption %}<h3>{{ s.caption }}</h3>{% endif %}
+    <div class="scroll"><table><thead><tr>{% for h in s.headers %}<th>{{ h }}</th>{% endfor %}</tr></thead>
+    <tbody>{% for r in s.rows %}<tr>{% for c in r %}<td>{{ c | cell }}</td>{% endfor %}</tr>{% else %}<tr><td colspan="{{ s.headers|length }}" class="muted">Nothing yet</td></tr>{% endfor %}</tbody></table></div>
+  {% elif s.type == 'form' %}
+    <form method="{{ s.method }}" action="{{ s.action }}" class="card">
+      {% if s.title %}<h3>{{ s.title }}</h3>{% endif %}
+      {% macro field(f, name) %}
+        {% if f.type == 'hidden' %}<input type="hidden" name="{{ name }}" value="{{ f.value }}">
+        {% else %}<label>{{ f.label }}
+        {% if f.type == 'select' %}<select name="{{ name }}">{% for v, l in f.options %}<option value="{{ v }}" {{ 'selected' if v|string == f.value|string }}>{{ l }}</option>{% endfor %}</select>
+        {% else %}<input type="{{ f.type }}" name="{{ name }}" value="{{ f.value }}" {% if f.step %}step="{{ f.step }}"{% endif %} {% if f.required %}required{% endif %} inputmode="{{ 'decimal' if f.type=='number' else 'text' }}">{% endif %}</label>{% endif %}
+      {% endmacro %}
+      <div class="grid">{% for f in s.fields %}{{ field(f, f.name) }}{% endfor %}</div>
+      {% if s.lines %}{% for i in range(s.lines.n) %}<div class="grid line">{% for f in s.lines.fields %}{{ field(f, f.name ~ '_' ~ i) }}{% endfor %}</div>{% endfor %}{% endif %}
+      <button class="primary">{{ s.submit }}</button>
+    </form>
+  {% else %}{{ s.html }}{% endif %}
+{% endfor %}
+{% endblock %}

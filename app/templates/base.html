@@ -1,0 +1,19 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ title or 'Order-to-Audit' }}</title>
+<link rel="stylesheet" href="/static/style.css"></head><body>
+<header>
+  <a class="brand" href="/">Snack Factory OS</a>
+  {% if session.user %}<nav>
+    {% set r = session.user.role %}
+    {% if r=='salesman' %}<a href="/m">Orders</a><a href="/m/new">New</a><a href="/m/sales">Sales</a>{% endif %}
+    {% if r=='admin' %}<a href="/admin/orders">Orders</a><a href="/admin/invoices">Invoices</a><a href="/admin/payments">Payments</a><a href="/prod">Production</a><a href="/admin/masters">Masters</a><a href="/reports">Reports</a><a href="/owner">Dashboard</a><a href="/admin/audit">Audit</a>{% endif %}
+    {% if r=='production' %}<a href="/prod">Production</a><a href="/prod/purchase">Purchase</a><a href="/reports">Reports</a>{% endif %}
+    {% if r=='accountant' %}<a href="/reports">Reports</a><a href="/admin/invoices">Invoices</a><a href="/admin/audit">Audit</a>{% endif %}
+    {% if r=='owner' %}<a href="/owner">Dashboard</a><a href="/reports">Reports</a>{% endif %}
+    <a href="/logout">Logout ({{ session.user.username }})</a></nav>{% endif %}
+</header>
+<main>
+{% for cat, msg in get_flashed_messages(with_categories=true) %}<div class="flash {{cat}}">{{ msg }}</div>{% endfor %}
+{% block body %}{% endblock %}
+</main></body></html>
